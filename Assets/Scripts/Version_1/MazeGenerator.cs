@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MazeGenerator : MonoBehaviour
-{
+public class MazeGenerator : MonoBehaviour {
     [SerializeField]
     private MazeNode _nodePrefab;
 
@@ -17,10 +16,10 @@ public class MazeGenerator : MonoBehaviour
         //StartCoroutine(GenerateMaze(_mazeSize));
     }
 
-     private void GenerateMazeInstant(Vector2Int size) {
+    private void GenerateMazeInstant(Vector2Int size) {
         List<MazeNode> nodes = new List<MazeNode>();
 
-        //создание узлов
+        //Создание узлов
         for(int x = 0; x < size.x; x++) {
             for(int y = 0; y < size.y; y++) {
                 Vector3 nodePos = new Vector3(x - (size.x / 2f), 0, y - (size.y / 2f));
@@ -35,7 +34,7 @@ public class MazeGenerator : MonoBehaviour
         //выбор начального узла
         currenPath.Add(nodes[Random.Range(0, nodes.Count)]);
         currenPath[0].SetState(NodeState.CURRENT);
-        
+
         //currenPath[currenPath.Count - 1].SetState(NodeState.COMPLETED); //эксперементировал
 
         while(completedNodes.Count < nodes.Count) {
@@ -49,18 +48,14 @@ public class MazeGenerator : MonoBehaviour
 
             if(currentNodeX < size.x - 1) {
                 //проверка с права
-                if(!completedNodes.Contains(nodes[currentNodeIndex + size.y]) &&
-                   !currenPath.Contains(nodes[currentNodeIndex + size.y])) {
-                    
+                if(!completedNodes.Contains(nodes[currentNodeIndex + size.y]) && !currenPath.Contains(nodes[currentNodeIndex + size.y])) {
                     possibleDirection.Add(1);
                     possibleNextNode.Add(currentNodeIndex + size.y);
                 }
             }
             if(currentNodeX > 0) {
                 //проверка с лева
-                if(!completedNodes.Contains(nodes[currentNodeIndex - size.y]) &&
-                   !currenPath.Contains(nodes[currentNodeIndex - size.y])) {
-
+                if(!completedNodes.Contains(nodes[currentNodeIndex - size.y]) && !currenPath.Contains(nodes[currentNodeIndex - size.y])) {
                     possibleDirection.Add(2);
                     possibleNextNode.Add(currentNodeIndex - size.y);
                 }
@@ -68,18 +63,14 @@ public class MazeGenerator : MonoBehaviour
 
             if(currentNodeY < size.y - 1) {
                 //проверка с верху
-                if(!completedNodes.Contains(nodes[currentNodeIndex + 1]) &&
-                   !currenPath.Contains(nodes[currentNodeIndex + 1])) {
-
+                if(!completedNodes.Contains(nodes[currentNodeIndex + 1]) && !currenPath.Contains(nodes[currentNodeIndex + 1])) {
                     possibleDirection.Add(3);
                     possibleNextNode.Add(currentNodeIndex + 1);
                 }
             }
             if(currentNodeY > 0) {
                 //проверка с низу
-                if(!completedNodes.Contains(nodes[currentNodeIndex - 1]) &&
-                   !currenPath.Contains(nodes[currentNodeIndex - 1])) {
-
+                if(!completedNodes.Contains(nodes[currentNodeIndex - 1]) && !currenPath.Contains(nodes[currentNodeIndex - 1])) {
                     possibleDirection.Add(4);
                     possibleNextNode.Add(currentNodeIndex - 1);
                 }
@@ -90,7 +81,8 @@ public class MazeGenerator : MonoBehaviour
                 var chosenDirection = Random.Range(0, possibleDirection.Count);
                 MazeNode chosenNode = nodes[possibleNextNode[chosenDirection]];
 
-                switch(possibleDirection[chosenDirection]) { //рушим стены
+                switch(possibleDirection[chosenDirection]) {
+                    //рушим стены
                     case 1:
                         chosenNode.RemoveWall(1);
                         currenPath[currenPath.Count - 1].RemoveWall(0);

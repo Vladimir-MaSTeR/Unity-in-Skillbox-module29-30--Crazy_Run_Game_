@@ -1,10 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class Buttons_MenuScene : MonoBehaviour
-{
+public class Buttons_MenuScene : MonoBehaviour {
     [Header("ПАНЕЛИ")]
-
     [Tooltip("Главная панель")]
     [SerializeField]
     private GameObject _mainPanel;
@@ -21,7 +18,7 @@ public class Buttons_MenuScene : MonoBehaviour
         if(_mainPanel.activeSelf || _autorPanel.activeSelf) {
             _mainPanel.SetActive(!_mainPanel.activeSelf);
             _autorPanel.SetActive(!_autorPanel.activeSelf);
-        } 
+        }
     }
 
     public void ClickSettinsPanelAndBack() {
@@ -35,12 +32,9 @@ public class Buttons_MenuScene : MonoBehaviour
 
     public void CkickStartGame() {
         SceneManager.LoadScene(1);
-
     }
 
     public void ClickExitGame() {
         Application.Quit();
     }
-
-
 }

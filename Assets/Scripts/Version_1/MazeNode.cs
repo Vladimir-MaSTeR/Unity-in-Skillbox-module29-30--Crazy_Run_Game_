@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public enum NodeState {
     AVAILABLE,
     CURRENT,
     COMPLETED
 }
 
-public class MazeNode : MonoBehaviour
-{
+public class MazeNode : MonoBehaviour {
     [Header("Стены")]
     [SerializeField]
     private GameObject[] _walls;

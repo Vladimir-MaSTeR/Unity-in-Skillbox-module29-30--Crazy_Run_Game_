@@ -1,23 +1,19 @@
 using UnityEngine;
-
-public class TestInput : MonoBehaviour
-{
-    void Update()
-    {
+public class TestInput : MonoBehaviour {
+    void Update() {
         Task_1();
         Task_2();
     }
 
     private void Task_1() {
         if(Input.touchCount > 0) {
-
             const int HUNDRED = 100;
             const int FIFTY = 50;
 
             Touch touch = Input.GetTouch(0);
 
             if(touch.deltaPosition.x > HUNDRED && touch.deltaPosition.y < FIFTY) {
-                Debug.Log("Свайп в право");               
+                Debug.Log("Свайп в право");
             }
 
             if(touch.deltaPosition.x < -HUNDRED && touch.deltaPosition.y > -FIFTY) {
@@ -26,10 +22,11 @@ public class TestInput : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void Task_2() {
         if(Input.touchCount > 1) {
-            Touch oldTouch1 = Input.GetTouch(0); ;  // Последняя точка касания 1 (палец 1)
-            Touch oldTouch2 = Input.GetTouch(1);  // Последняя точка касания 2 (палец 2)
+            Touch oldTouch1 = Input.GetTouch(0); // Последняя точка касания 1 (палец 1)
+            Touch oldTouch2 = Input.GetTouch(1); // Последняя точка касания 2 (палец 2)
 
             Touch newTouch1 = Input.GetTouch(0);
             Touch newTouch2 = Input.GetTouch(1);
@@ -83,7 +80,8 @@ public class TestInput : MonoBehaviour
             // TouchPhase.Ended - палец был только что убран
             // TouchPhase.Canceled - система отменила инпут
 
-            if(touch.phase == TouchPhase.Began) { // регистрируем только начало тапа
+            if(touch.phase == TouchPhase.Began) {
+                // регистрируем только начало тапа
                 Debug.Log("Taп");
             }
         }

@@ -1,23 +1,23 @@
 using UnityEngine;
 public class MazeSpawner : MonoBehaviour {
     
-    #region ÏÅÐÅÌÅÍÍÛÅ ÄÂÈÆÊÀ
+    #region ÐŸÐ•Ð Ð•ÐœÐ•ÐÐÐ«Ð• Ð”Ð’Ð˜Ð–ÐšÐ
 
-    [Header("Ïàðàìåòðû")]
+    [Header("ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹")]
     [SerializeField]
-    [Tooltip("Øèðèíà ëàáèðèíòà")]
+    [Tooltip("Ð¨Ð¸Ñ€Ð¸Ð½Ð° Ð»Ð°Ð±Ð¸Ñ€Ð¸Ð½Ñ‚Ð°")]
     private int _width = 10;
 
     [SerializeField]
-    [Tooltip("Âûñîòà ëàáèðèíòà")]
+    [Tooltip("Ð’Ñ‹ÑÐ¾Ñ‚Ð° Ð»Ð°Ð±Ð¸Ñ€Ð¸Ð½Ñ‚Ð°")]
     private int _height = 9;
 
     [SerializeField]
-    [Tooltip("Ïðåôàá ñòåíû")]
+    [Tooltip("ÐŸÑ€ÐµÑ„Ð°Ð± ÑÑ‚ÐµÐ½Ñ‹")]
     private GameObject _cellPrefab;
 
     [SerializeField]
-    [Tooltip("Ðàçìåð ÿ÷åéêè")]
+    [Tooltip("Ð Ð°Ð·Ð¼ÐµÑ€ ÑÑ‡ÐµÐ¹ÐºÐ¸")]
     private Vector3 _cellSize = new Vector3(1, 1, 0);
 
     [Space(20)]
@@ -46,7 +46,7 @@ public class MazeSpawner : MonoBehaviour {
         _hintRendererScript.DrawPath();
     }
 
-    #region ÃÅÒÒÅÐÛ È ÑÅÒÒÅÐÛ
+    #region Ð“Ð•Ð¢Ð¢Ð•Ð Ð« Ð˜ Ð¡Ð•Ð¢Ð¢Ð•Ð Ð«
 
     public int Width {get => _width; set => this._width = value;}
     public int Height {get => _height; set => this._height = value;}

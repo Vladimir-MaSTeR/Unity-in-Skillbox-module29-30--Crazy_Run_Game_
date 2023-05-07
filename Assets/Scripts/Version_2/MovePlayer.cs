@@ -13,6 +13,6 @@ public class MovePlayer : MonoBehaviour {
     }
 
     private void Move(Vector3 vector) {
-        _rigidbody.AddForce(vector, ForceMode.Impulse);
+        _rigidbody.AddForce(vector, ForceMode.Force);
     }
 }

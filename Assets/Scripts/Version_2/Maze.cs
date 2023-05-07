@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using Version_2;
 public class Maze {
-
     private MazeGeneratorCell[,] _cells;
     private Vector2Int _finishPosition;
 

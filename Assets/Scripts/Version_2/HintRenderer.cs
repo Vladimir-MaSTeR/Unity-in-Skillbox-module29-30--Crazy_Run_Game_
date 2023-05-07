@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Version_2;
 public class HintRenderer : MonoBehaviour {
     [SerializeField]
     [Tooltip("Скрипт MazeSpawner")]

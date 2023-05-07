@@ -15,6 +15,10 @@ public class MazeSpawner : MonoBehaviour {
     [SerializeField]
     [Tooltip("Префаб стены")]
     private GameObject _cellPrefab;
+    
+    [SerializeField]
+    [Tooltip("Префаб финиша")]
+    private GameObject _finishPrefab;
 
     [SerializeField]
     [Tooltip("Размер ячейки")]
@@ -40,9 +44,15 @@ public class MazeSpawner : MonoBehaviour {
 
                 cell.WallLeft.SetActive(_maze.Cells[x, y].WallLeft);
                 cell.WallBottom.SetActive(_maze.Cells[x, y].WallBottom);
+                cell.Flor.SetActive(_maze.Cells[x, y].Flor);
+                cell.FinishObject.SetActive(_maze.Cells[x, y].FinishObject);
+
             }
         }
-        
+
+        // var finishPosition = new Vector3(_maze.FinishPosition.x, _maze.FinishPosition.y, _maze.FinishPosition.y);
+        // Instantiate(_finishPrefab, finishPosition, Quaternion.identity);
+
         _hintRendererScript.DrawPath();
     }
 

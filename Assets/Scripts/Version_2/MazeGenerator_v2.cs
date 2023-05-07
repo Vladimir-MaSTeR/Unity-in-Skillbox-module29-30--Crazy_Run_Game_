@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Version_2;
 public class MazeGenerator_v2 {
 
     /**
@@ -19,10 +18,12 @@ public class MazeGenerator_v2 {
 
         for(int x = 0; x < cells.GetLength(0); x++) {
             cells[x, height - 1].WallLeft  = false;
+            cells[x, height - 1].Flor  = false;
         }
 
         for(int y = 0; y < cells.GetLength(1); y++) {
             cells[width - 1, y].WallBottom = false;
+            cells[width - 1, y].Flor = false;
         }
 
         RemoveWalls(cells, width, height);
@@ -108,15 +109,17 @@ public class MazeGenerator_v2 {
         }
         
         // ломаем стену вне лабиринта но проще в furthest поставить объект финиша
-        if(furthest.X == 0) {
-            furthest.WallLeft = false;
-        } else if(furthest.Y == 0) {
-            furthest.WallBottom = false;
-        } else if(furthest.X == width - 2) {
-            maze[furthest.X + 1, furthest.Y].WallLeft = false;
-        } else if(furthest.Y == height - 2) {
-            maze[furthest.X, furthest.Y + 1].WallBottom = false;
-        }
+        // if(furthest.X == 0) {
+        //     furthest.WallLeft = false;
+        // } else if(furthest.Y == 0) {
+        //     furthest.WallBottom = false;
+        // } else if(furthest.X == width - 2) {
+        //     maze[furthest.X + 1, furthest.Y].WallLeft = false;
+        // } else if(furthest.Y == height - 2) {
+        //     maze[furthest.X, furthest.Y + 1].WallBottom = false;
+        // }
+
+        furthest.FinishObject = true;
 
         return new Vector2Int(furthest.X, furthest.Y);
 

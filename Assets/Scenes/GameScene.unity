@@ -1993,7 +1993,6 @@ MonoBehaviour:
   _width: 10
   _height: 9
   _cellPrefab: {fileID: 5425298846687994150, guid: 73b01c6d0d47468448a06ad00fb74be6, type: 3}
-  _finishPrefab: {fileID: 2106864337676602519, guid: 2002d3350a0a96f41bd96c052498fc98, type: 3}
   _cellSize: {x: 10, y: 0, z: 10}
   _hintRendererScript: {fileID: 1619069323}
 --- !u!4 &892199033
@@ -3515,9 +3514,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.3207547, g: 0, b: 0.030663885, a: 1}
-      key1: {r: 0.3207547, g: 0, b: 0.030663885, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.04150939, g: 1, b: 0.053654876, a: 1}
+      key1: {r: 0.04150939, g: 1, b: 0.053654876, a: 1}
+      key2: {r: 0.3207547, g: 0, b: 0.030663885, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -3525,7 +3524,7 @@ LineRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0

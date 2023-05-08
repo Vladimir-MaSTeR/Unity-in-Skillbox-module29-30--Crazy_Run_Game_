@@ -1,45 +1,57 @@
-using System;
-using System.Globalization;
 using TMPro;
 using UnityEngine;
 public class GameLogic : MonoBehaviour {
+    #region –ü–ï–†–ï–ú–ï–ù–ù–´–ï –î–í–ò–ñ–ö–ê
+
     [SerializeField]
-    [Tooltip("—Ú‡ÚÓ‚ÓÂ ÍÓÎÎË˜ÂÒ‚Ó ÏÓÌÂÚ")]
+    [Tooltip("–°—Ç–∞—Ä—Ç–æ–≤–æ–µ –∫–æ–ª–ª–∏—á–µ—Å–≤–æ –º–æ–Ω–µ—Ç")]
     private int _startCoin;
 
     [SerializeField]
-    [Tooltip("¬ÂÏˇ ‡ÛÌ‰‡ ‚ ÒÂÍÛÌ‰‡ı")]
+    [Tooltip("–í—Ä–µ–º—è —Ä–∞—É–Ω–¥–∞ –≤ —Å–µ–∫—É–Ω–¥–∞—Ö")]
     private float _startRoundTime = 10f;
 
     [Space(20)]
-    [Header("“ÂÍÒÚÓ‚˚Â ÔÓÎˇ")]
+    [Header("–¢–µ–∫—Å—Ç–æ–≤—ã–µ –ø–æ–ª—è")]
     [SerializeField]
     private TMP_Text _coinText;
 
     [SerializeField]
     private TMP_Text _roundTimeText;
 
-    
-
-
+    #endregion
 
     private int _currentCoin;
     private float _currentRoundTime;
+    private bool _paused = false;
 
     private void Awake() {
         _currentCoin = _startCoin;
         _currentRoundTime = _startRoundTime;
+
+        _paused = false;
+    }
+
+    private void OnEnable() {
+        GameEvents.onPaused += SetPausedEvent;
+        GameEvents.onGetCoin += GetCurrentCoinEvent;
+    }
+    private void OnDisable() {
+        GameEvents.onPaused -= SetPausedEvent;
+        GameEvents.onGetCoin -= GetCurrentCoinEvent;
     }
 
     private void FixedUpdate() {
-        if(_currentRoundTime > 0) {
-            UpdateTimerText(_currentRoundTime);
-            UpdateCoinText(_currentCoin);
-            
-            _currentRoundTime -= Time.deltaTime;
-            
-        } else {
-            Debug.Log("¬€ œ–Œ»√–¿À»");
+        if(!_paused) {
+            if(_currentRoundTime > 0) {
+                UpdateTimerText(_currentRoundTime);
+                UpdateCoinText(_currentCoin);
+
+                _currentRoundTime -= Time.deltaTime;
+            } else {
+                // Debug.Log("–í–´ –ü–†–û–ò–ì–†–ê–õ–ò");
+                GameEvents.onGameOver?.Invoke();
+            }
         }
     }
 
@@ -47,20 +59,20 @@ public class GameLogic : MonoBehaviour {
         if(time < 0) {
             time = 0;
         }
-        
+
         var minutes = Mathf.FloorToInt(time / 60);
         var seconds = Mathf.FloorToInt(time % 60);
         _roundTimeText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
     }
-
     private void UpdateCoinText(int value) {
-        var finaleText = $"ÃÓÌÂÚ˚: {value}";
-        
+        var finaleText = $"–ú–æ–Ω–µ—Ç—ã: {value}";
+
         _coinText.text = finaleText;
     }
+    private void SetPausedEvent(bool value) { _paused = value; }
+    private int GetCurrentCoinEvent() { return _currentCoin; }
 
-
-    #region √≈““≈–€ » —≈““≈–€
+    #region –ì–ï–¢–¢–ï–†–´ –ò –°–ï–¢–¢–ï–†–´
 
     public int CurrentCoin { get => _currentCoin; set => _currentCoin = value; }
 

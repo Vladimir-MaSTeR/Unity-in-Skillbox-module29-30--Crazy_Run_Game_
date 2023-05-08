@@ -31,7 +31,7 @@ public class Buttons_MenuScene : MonoBehaviour {
     }
 
     public void CkickStartGame() {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(GameConstants.GAME_SCENE_INDEX);
     }
 
     public void ClickExitGame() {

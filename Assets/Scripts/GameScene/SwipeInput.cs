@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 public class SwipeInput : MonoBehaviour, IDragHandler, IBeginDragHandler {
-    
-    public void OnDrag(PointerEventData eventData) {
-    }
+    public void OnDrag(PointerEventData eventData) { }
 
     public void OnBeginDrag(PointerEventData eventData) {
         if(Mathf.Abs(eventData.delta.x) > Mathf.Abs(eventData.delta.y)) {

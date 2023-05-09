@@ -13,6 +13,8 @@ public class Buttons_MenuScene : MonoBehaviour {
     [Tooltip("Панель настроек")]
     [SerializeField]
     private GameObject _settingsPanel;
+    
+    
 
     public void ClickAutorPanelAndBack() {
         if(_mainPanel.activeSelf || _autorPanel.activeSelf) {
@@ -31,6 +33,17 @@ public class Buttons_MenuScene : MonoBehaviour {
     }
 
     public void CkickStartGame() {
+
+        var sessionNumber = 0;
+        //получаем сессию
+        if(PlayerPrefs.HasKey(GameConstants.SESSION_KEY)) {
+            sessionNumber = PlayerPrefs.GetInt(GameConstants.SESSION_KEY);
+            sessionNumber++;
+        }
+        
+        PlayerPrefs.SetInt(GameConstants.SESSION_KEY, sessionNumber);
+        PlayerPrefs.Save();
+        
         SceneManager.LoadScene(GameConstants.GAME_SCENE_INDEX);
     }
 

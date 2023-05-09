@@ -40,8 +40,11 @@ public class UiPanelController : MonoBehaviour {
 
     public void BackInMenuScene() {
         int coin = (int)GameEvents.onGetCoin?.Invoke();
+        int session = (int)GameEvents.onGetSession?.Invoke();
+        
         Dictionary<string, int> saveDictionary = new Dictionary<string, int>();
-        saveDictionary.Add(GameConstants.COIN_KEY, coin);
+        saveDictionary.Add(GameConstants.SESSION_KEY, session);
+        saveDictionary.Add(GameConstants.COIN_KEY + GameConstants.SESSION_KEY, coin);
         
         //Ещё нужны будут данные для статистики
         

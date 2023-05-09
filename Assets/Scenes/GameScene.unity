@@ -446,8 +446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53506a9495c9cd24b8684d9e3816d524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startCoin: 555
-  _startRoundTime: 90
+  _startCoin: 0
+  _startRoundTime: 180
   _coinText: {fileID: 1632578159}
   _roundTimeText: {fileID: 487702669}
 --- !u!1 &227669588

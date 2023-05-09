@@ -7,5 +7,8 @@ public class GameEvents : MonoBehaviour {
     public static Action onGameOver;
     public static Action onFinish;
 
+    public static Action onAddCoin;
     public static Func<int> onGetCoin;
+
+    public static Func<int> onGetSession;
 }

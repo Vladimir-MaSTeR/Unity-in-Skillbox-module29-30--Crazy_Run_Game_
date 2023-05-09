@@ -27,11 +27,11 @@ public class GameLogic : MonoBehaviour {
 
     /**
      * Задумка следующая - при нажатии кнопки старт в меню игры
-     * эту переменную всегда только увеличивается увеличивать.
+     * эта переменная всегда только увеличивается.
      * Переменна уникальна.
      * Показывает текущую сессию к которой нужно привязать сохранение статистики.
      */
-    private int _sessionNumber = 0; 
+    private int _sessionNumber = 0;
 
     private void Awake() {
         _currentCoin = _startCoin;
@@ -43,8 +43,7 @@ public class GameLogic : MonoBehaviour {
         //получаем сессию
         if(PlayerPrefs.HasKey(GameConstants.SESSION_KEY)) {
             _sessionNumber = PlayerPrefs.GetInt(GameConstants.SESSION_KEY);
-        } else {
-            _sessionNumber = 0;
+            Debug.Log($"Загрузил номер сессии = {_sessionNumber}");
         }
     }
 

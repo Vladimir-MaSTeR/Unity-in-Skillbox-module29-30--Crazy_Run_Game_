@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 public class MazeGenerator_v2 {
+    
     /**
      * Генерация лабиринта
      */
@@ -131,13 +132,14 @@ public class MazeGenerator_v2 {
 
         return new Vector2Int(furthest.X, furthest.Y);
     }
-
     private void RandomActiveTrapsAndCoin(MazeGeneratorCell[,] maze) {
         for(int x = 0; x < maze.GetLength(0); x++) {
             for(int y = 0; y < maze.GetLength(1); y++) {
                 var randomNumber = Random.Range(0, 20);
 
-                if(randomNumber == 0 || randomNumber == 1 || randomNumber == 2 || randomNumber == 3 || randomNumber == 4 || randomNumber == 5) {
+                if(randomNumber == 0 || randomNumber == 1 || randomNumber == 2 || 
+                   randomNumber == 3 || randomNumber == 4 || randomNumber == 5 ||
+                   randomNumber == 6 || randomNumber == 7 || randomNumber == 8 || randomNumber == 9) {
                     maze[x, y].Coin = true;
                 }
 

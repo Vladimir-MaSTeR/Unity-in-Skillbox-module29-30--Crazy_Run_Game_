@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 public class MazeSpawner : MonoBehaviour {
     #region ПЕРЕМЕННЫЕ ДВИЖКА
@@ -26,6 +27,8 @@ public class MazeSpawner : MonoBehaviour {
     #endregion
 
     private Maze _maze;
+
+    private void Awake() { ReloadSizeMaze(); }
     private void Start() {
         MazeGenerator_v2 generatorV2 = new MazeGenerator_v2();
         _maze = generatorV2.GenerateMaze(_width, _height);
@@ -46,6 +49,16 @@ public class MazeSpawner : MonoBehaviour {
 
        
         _hintRendererScript.DrawPath();
+    }
+
+    private void ReloadSizeMaze() {
+        if(PlayerPrefs.HasKey(GameConstants.MAZE_WIDTH_KEY)) {
+            _width = PlayerPrefs.GetInt(GameConstants.MAZE_WIDTH_KEY);
+        }
+
+        if(PlayerPrefs.HasKey(GameConstants.MAZE_HEIGHT_KEY)) {
+            _height = PlayerPrefs.GetInt(GameConstants.MAZE_HEIGHT_KEY);
+        }
     }
 
     #region ГЕТТЕРЫ И СЕТТЕРЫ

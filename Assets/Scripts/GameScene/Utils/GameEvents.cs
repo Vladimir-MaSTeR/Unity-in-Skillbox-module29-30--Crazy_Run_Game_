@@ -11,4 +11,6 @@ public class GameEvents : MonoBehaviour {
     public static Func<int> onGetCoin;
 
     public static Func<int> onGetSession;
+    
+    
 }

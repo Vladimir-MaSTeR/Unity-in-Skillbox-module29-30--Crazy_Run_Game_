@@ -310,3 +310,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e7b39ace1b748004eb87efd92a642ce3, type: 3}
   - {fileID: 8300000, guid: be7d43c44bc1034448d0a0f88c62d0e0, type: 3}
   _clickButtonClip: {fileID: 8300000, guid: 964db8c61eae5ec4d99ded16c9d5b7ed, type: 3}
+  _coinClip: {fileID: 8300000, guid: fa5fdbbdcc1a3eb46b032677900143de, type: 3}
+  _finishClip: {fileID: 8300000, guid: c4cb632a7215f7d409fb2b87a831a870, type: 3}
+  _gameOverClip: {fileID: 8300000, guid: 2ff9a7cd753899b4398c0cd9a0023f6a, type: 3}
+  _negativeAbilityClip: {fileID: 8300000, guid: 058f9147c6bba864b92ae77ed1bbc1a3, type: 3}

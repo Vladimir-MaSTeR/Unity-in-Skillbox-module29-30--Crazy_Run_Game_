@@ -60,6 +60,11 @@ public class Buttons_MenuScene : MonoBehaviour {
         SceneManager.LoadScene(GameConstants.GAME_SCENE_INDEX);
     }
 
+    public void ClickRemoveStatsSaves() {
+        PlayerPrefs.DeleteAll();
+        GameEvents.onRemoveStatsSaves?.Invoke();
+    }
+
     public void ClickExitGame() {
         Application.Quit();
     }

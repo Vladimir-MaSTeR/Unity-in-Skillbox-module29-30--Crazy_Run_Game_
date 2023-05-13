@@ -28,6 +28,9 @@ public class SounsMenuScene : MonoBehaviour {
     
     [SerializeField]
     private AudioClip _gameOverClip;
+    
+    [SerializeField]
+    private AudioClip _negativeAbilityClip;
 
     private void Start() { StartFonMusic(); }
 
@@ -35,12 +38,16 @@ public class SounsMenuScene : MonoBehaviour {
         GameEvents.onAddCoin += CoinMusic;
         GameEvents.onGameOver += GameOverMusic;
         GameEvents.onFinish += FinishMusic;
+        GameEvents.onNegativeAbility += NegativeAbility;
+        GameEvents.onPositiveAbility += ClickButtonsMusic;
     }
 
     private void OnDisable() {
         GameEvents.onAddCoin -= CoinMusic;
         GameEvents.onGameOver -= GameOverMusic;
         GameEvents.onFinish -= FinishMusic;
+        GameEvents.onNegativeAbility -= NegativeAbility;
+        GameEvents.onPositiveAbility -= ClickButtonsMusic;
     }
 
     private void StartFonMusic() {
@@ -74,6 +81,8 @@ public class SounsMenuScene : MonoBehaviour {
     public void ClickButtonsMusic() {
         _environmentSource.PlayOneShot(_clickButtonClip);
     }
-    
-    
+
+    public void NegativeAbility() {
+        _environmentSource.PlayOneShot(_negativeAbilityClip);
+    }
 }

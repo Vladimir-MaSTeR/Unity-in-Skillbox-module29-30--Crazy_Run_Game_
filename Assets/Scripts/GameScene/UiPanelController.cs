@@ -64,9 +64,8 @@ public class UiPanelController : MonoBehaviour {
     }
 
     public void BackInGameFromPausedPanel() {
-        _pausedPanel.SetActive(false);
         GameEvents.onPaused?.Invoke(false);
-        //отправить евент активации паузы
+        _pausedPanel.SetActive(false);
     }
 
     #endregion

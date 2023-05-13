@@ -27,6 +27,7 @@ public class MazeSpawner : MonoBehaviour {
     #endregion
 
     private Maze _maze;
+    private bool _activePath = false;
 
     private void Awake() { ReloadSizeMaze(); }
     private void Start() {
@@ -46,10 +47,13 @@ public class MazeSpawner : MonoBehaviour {
                 cell.FinishObject.SetActive(_maze.Cells[x, y].FinishObject);
             }
         }
-
-       
-        _hintRendererScript.DrawPath();
+        
+            // _hintRendererScript.DrawPath();
     }
+
+    private void OnEnable() { GameEvents.onActivePathAbility += SetActivePath; }
+
+    private void OnDisable() { GameEvents.onActivePathAbility -= SetActivePath; }
 
     private void ReloadSizeMaze() {
         if(PlayerPrefs.HasKey(GameConstants.MAZE_WIDTH_KEY)) {
@@ -59,6 +63,17 @@ public class MazeSpawner : MonoBehaviour {
         if(PlayerPrefs.HasKey(GameConstants.MAZE_HEIGHT_KEY)) {
             _height = PlayerPrefs.GetInt(GameConstants.MAZE_HEIGHT_KEY);
         }
+    }
+
+    private void SetActivePath(bool value) {
+        _activePath = value;
+
+        if(_activePath) {
+            _hintRendererScript.DrawPath();
+        } else {
+            _hintRendererScript.gameObject.SetActive(false);
+        }
+        
     }
 
     #region ГЕТТЕРЫ И СЕТТЕРЫ

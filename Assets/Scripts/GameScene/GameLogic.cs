@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 public class GameLogic : MonoBehaviour {
+    
     #region ПЕРЕМЕННЫЕ ДВИЖКА
 
     [SerializeField]
@@ -51,20 +52,20 @@ public class GameLogic : MonoBehaviour {
         GameEvents.onPaused += SetPausedEvent;
         GameEvents.onGetCoin += GetCurrentCoinEvent;
         GameEvents.onAddCoin += AddOneCoin;
+        GameEvents.onModifayCoin += ModifayCoin;
         GameEvents.onGetSession += GetSessionNumberEvent;
     }
     private void OnDisable() {
         GameEvents.onPaused -= SetPausedEvent;
         GameEvents.onGetCoin -= GetCurrentCoinEvent;
         GameEvents.onAddCoin -= AddOneCoin;
+        GameEvents.onModifayCoin -= ModifayCoin;
         GameEvents.onGetSession -= GetSessionNumberEvent;
     }
 
     private void FixedUpdate() {
         ManagementRoundTime();
     }
-
-    
 
     private void ManagementRoundTime() {
         if(!_paused) {
@@ -82,6 +83,21 @@ public class GameLogic : MonoBehaviour {
 
     private void AddOneCoin() {
         _currentCoin++;
+        UpdateCoinText(_currentCoin);
+    }
+    
+    private void ModifayCoin(bool plusOrMinus, int value) {
+
+        if(plusOrMinus) {
+            _currentCoin += value;
+        } else {
+            _currentCoin -= value;
+        }
+
+        if(_currentCoin < 0) {
+            _currentCoin = 0;
+        }
+        
         UpdateCoinText(_currentCoin);
     }
 
